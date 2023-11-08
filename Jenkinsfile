@@ -46,6 +46,19 @@ pipeline {
                 }
             }
         }
+        stage('Merge release to main') {
+            when {
+                expression {
+                    env.BRANCH_NAME == 'release'
+                }
+            }
+            steps {
+                sh """git checkout main --force"""
+                sh """git pull"""
+                sh """git merge origin/release -m 'Automatic merge from release to main'"""
+                sh """git push"""
+            }
+        }
     }
     post {
 //        always {
