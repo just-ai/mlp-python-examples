@@ -46,20 +46,19 @@ pipeline {
                 }
             }
         }
-//         https://jira.just-ai.com/browse/OP-5813
-//         stage('Merge release to main') {
-//             when {
-//                 expression {
-//                     env.BRANCH_NAME == 'release'
-//                 }
-//             }
-//             steps {
-//                 sh """git checkout main --force"""
-//                 sh """git pull"""
-//                 sh """git merge origin/release -m 'Automatic merge from release to main'"""
-//                 sh """git push"""
-//             }
-//         }
+        stage('Merge release to main') {
+            when {
+                expression {
+                    env.BRANCH_NAME == 'release'
+                }
+            }
+            steps {
+                sh """git checkout main --force"""
+                sh """git pull"""
+                sh """git merge origin/release -m 'Automatic merge from release to main'"""
+                sh """git push"""
+            }
+        }
     }
     post {
 //        always {
