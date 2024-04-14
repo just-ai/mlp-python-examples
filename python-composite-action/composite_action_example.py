@@ -14,8 +14,8 @@ class TextsCollection(BaseModel):
 
 
 ACCOUNT = "just-ai"
-GRAMMAR_SERVICE = "spellcheck"
-PUNCTUATION_SERVICE = "punctuation"
+GRAMMAR_SERVICE = "symspell-weighted-spellcheck"
+PUNCTUATION_SERVICE = "caila-punctuation-corrector"
 
 
 class CompositeActionExample(Task):
