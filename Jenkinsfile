@@ -11,10 +11,16 @@ pipeline {
     }
 
     parameters {
-        extendedChoice(name: 'COMPONENTS',
-                value: 'python-client,python-composite-action,python-fit-action,python-rest-client,python-simple-action',
-                defaultValue: 'python-client,python-composite-action,python-fit-action,python-rest-client,python-simple-action',
-                description: '', descriptionPropertyValue: '', multiSelectDelimiter: ',', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_MULTI_SELECT', visibleItemCount: 5)
+        activeChoice(name: 'COMPONENTS',
+                choiceType: 'PT_MULTI_SELECT',
+                randomName: 'choice-parameter-components',
+                filterable: false,
+                filterLength: 1,
+                script: groovyScript(
+                        script: [classpath: [], sandbox: true, script: '''return ['python-client:selected', 'python-composite-action:selected', 'python-fit-action:selected', 'python-rest-client:selected', 'python-simple-action:selected']'''],
+                        fallbackScript: [classpath: [], sandbox: true, script: 'return []']
+                ),
+                description: '')
     }
     stages {
         stage('notify gitlab') {
