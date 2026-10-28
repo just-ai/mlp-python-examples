@@ -1,1 +1,1 @@
-git+https://git@github.com/just-ai/mlp-python-sdk.git@release-1.12.4
+git+https://git@github.com/just-ai/mlp-python-sdk.git@v1.0.1
