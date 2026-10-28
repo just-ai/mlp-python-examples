@@ -16,7 +16,7 @@ IMAGE=docker-pub.caila.io/caila-public/$ACTION_NAME:$BRANCH
 # using static LTS version of SDK
 # ./set_mlp_sdk_version.sh "$BRANCH"
 
-DOCKER_BUILDKIT=1 docker build . -t "$IMAGE"
+DOCKER_BUILDKIT=1 docker build --build-arg IMAGE_NAME=$IMAGE . -t "$IMAGE"
 
 echo "$IMAGE"
 
